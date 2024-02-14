@@ -10,13 +10,19 @@ Before running this application, ensure you have the following installed:
 
 # Installation
 1. Clone this repository to your local machine:
+```bash
    git clone <repository-url>
+```
 
 2. Navigate into the project directory:
+```bash
    cd NodeJS-CRUD
+```
 
 3. Install dependencies using npm or yarn:
+```bash
    npm install
+```
 
 # Configuration
 1. Ensure you have PostgreSQL installed and running on your system.
@@ -25,9 +31,9 @@ Before running this application, ensure you have the following installed:
 
 # Running the Application
 1. After configuring the database, start the application by running:
-   ```bash
+```bash
    nodemon app.js
-   ```
+```
 
 2. Once the server is running, you can access the CRUD application through your web browser or API testing tool.
 
