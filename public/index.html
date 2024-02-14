@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>API Mock for Call</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <h1>API Mock Data</h1>
+    <div id="content">
+      <button id="fetchUsersBtn">Fetch Users</button>
+      <table id="usersTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Position</th>
+            <th>User ID</th>
+          </tr>
+        </thead>
+        <tbody id="usersTableBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      // Fetch users from the API when the button is clicked
+      document
+        .getElementById("fetchUsersBtn")
+        .addEventListener("click", function () {
+          fetch("http://localhost:9090/api/dev/users/postgre")
+            .then((response) => response.json())
+            .then((data) => {
+              const usersTableBody = document.getElementById("usersTableBody");
+              usersTableBody.innerHTML = ""; // Clear the previous table body
+
+              data.forEach((user) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+              <td>${user.id}</td>
+              <td>${user.firstname}</td>
+              <td>${user.lastname}</td>
+              <td>${user.position}</td>
+              <td>${user.userid}</td>
+            `;
+                usersTableBody.appendChild(row);
+              });
+            })
+            .catch((error) => {
+              console.error("Error fetching users:", error);
+            });
+        });
+    </script>
+  </body>
+</html>
